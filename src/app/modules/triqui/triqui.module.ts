@@ -7,11 +7,15 @@ import { TriquiRoutingModule } from './triqui.router';
 // COMPONENTS
 import { TriquiComponent } from './component/triqui/triqui.component';
 
+// DIRECTIVE
+import { SelectedBoxDirective } from './directives/selected-box.directive';
+
 
 
 @NgModule({
   declarations: [
-    TriquiComponent
+    TriquiComponent,
+    SelectedBoxDirective
   ],
   imports: [
     CommonModule,

@@ -10,19 +10,52 @@
 
     <div class="triqui">
         <div class="triqui-column">
-            <div class="triqui-column-one"></div>
-            <div></div>
-            <div class="triqui-column-three"></div>
+            <div class="triqui-column-one" 
+                 (click)="onClick(0)"
+                 (contextmenu)="onRightClick(0)"
+                 [appSelectedBox]="one"
+            ></div>
+            <div (click)="onClick(1)"
+                 (contextmenu)="onRightClick(1)"
+                 [appSelectedBox]="two"
+             ></div>
+            <div class="triqui-column-three"
+                 (click)="onClick(2)"
+                 (contextmenu)="onRightClick(2)"
+                 [appSelectedBox]="three"></div>
         </div>
         <div class="triqui-column">
-            <div class="triqui-column-four"></div>
-            <div class="triqui-column-five"></div>
-            <div class="triqui-column-six"></div>
+            <div class="triqui-column-four"
+                 (click)="onClick(3)"
+                 (contextmenu)="onRightClick(3)"
+                 [appSelectedBox]="four"
+            ></div>
+            <div class="triqui-column-five"
+                 (click)="onClick(4)"
+                 (contextmenu)="onRightClick(4)"
+                 [appSelectedBox]="five"
+            ></div>
+            <div class="triqui-column-six"
+                 (click)="onClick(5)"
+                 (contextmenu)="onRightClick(5)"
+                 [appSelectedBox]="six"
+            ></div>
         </div>
         <div class="triqui-column">
-            <div class="triqui-column-seven"></div>
-            <div></div>
-            <div class="triqui-column-nine"></div>
+            <div class="triqui-column-seven"
+                 (click)="onClick(6)" 
+                 (contextmenu)="onRightClick(6)"
+                 [appSelectedBox]="seven"
+            ></div>
+            <div (click)="onClick(7)"
+                 (contextmenu)="onRightClick(7)"
+                 [appSelectedBox]="eigh"
+            ></div>
+            <div class="triqui-column-nine"
+                 (click)="onClick(8)"
+                 (contextmenu)="onRightClick(8)"
+                 [appSelectedBox]="nine"
+            ></div>
         </div>
     </div>
 

@@ -31,13 +31,16 @@
 
 .triqui-column {
     div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 100px;
         width: 100px;
         border: 1px;
         // border-style: solid ;
     }
     .triqui-column-one{
-        border-style: none solid solid none;
+        border-style: none solid solid none;        
     }
     .triqui-column-three {
         border-style: solid solid none none;
@@ -56,5 +59,15 @@
     }
     .triqui-column-nine {
         border-style: solid none none none;
-    }
+    }    
+}
+
+.circle::after {
+    content: "O";
+    font-size: 5rem;
+}
+
+.ex::after {
+    content: "X";
+    font-size: 5rem;
 }
