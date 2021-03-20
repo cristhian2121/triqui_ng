@@ -1,0 +1,60 @@
+.container-win {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    h1 {
+        color: chartreuse;
+    }    
+}
+
+.container-triqui {
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    .player-one, .player-two {
+        p{
+            font-size: 1rem;
+        }
+    }
+}
+
+.triqui {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .triqui-column {
+        display: inline;
+    }    
+}
+
+.triqui-column {
+    div {
+        height: 100px;
+        width: 100px;
+        border: 1px;
+        // border-style: solid ;
+    }
+    .triqui-column-one{
+        border-style: none solid solid none;
+    }
+    .triqui-column-three {
+        border-style: solid solid none none;
+    }
+    .triqui-column-four {
+        border-style: none solid solid none;
+    }
+    .triqui-column-five {
+        border-style: none solid none solid;
+    }
+    .triqui-column-six {
+        border-style: solid solid none none;
+    }
+    .triqui-column-seven {
+        border-style: none none solid none;
+    }
+    .triqui-column-nine {
+        border-style: solid none none none;
+    }
+}
