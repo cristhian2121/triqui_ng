@@ -8,6 +8,7 @@ import { TriquiModule } from './modules/triqui/triqui.module';
 // COMPONENTS
 import { AppComponent } from './app.component';
 import { HomeComponent } from './modules/home/component/home/home.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +19,9 @@ import { HomeComponent } from './modules/home/component/home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     TriquiModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

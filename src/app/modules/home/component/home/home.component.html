@@ -5,17 +5,17 @@
     <div class="container-players">
         <div class="players-input">
             <div>
-                <input class="input-payer" placeholder="Jugador 1" />
+                <input [(ngModel)]="player1" class="input-payer" placeholder="Jugador 1" />
             </div>
             <div>
                 <h2>Vs</h2>
             </div>
             <div>
-                <input class="input-payer" placeholder="Jugador 2" />
+                <input [(ngModel)]="player2" class="input-payer" placeholder="Jugador 2" />
             </div>
         </div>
         <div class="players-button">
-            <button class="success-button" [routerLink]="['/triqui']">Iniciar a Jugar</button>
+            <button class="success-button" (click)="startGame()">Iniciar a Jugar</button>
         </div>
     </div>
     <div class="container-other"></div>

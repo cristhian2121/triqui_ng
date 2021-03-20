@@ -1,4 +1,5 @@
 .container-win {
+    height: 100px;
     margin-top: 30px;
     margin-bottom: 30px;
     display: flex;
@@ -71,3 +72,10 @@
     content: "X";
     font-size: 5rem;
 }
+
+.container-button-reset {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+

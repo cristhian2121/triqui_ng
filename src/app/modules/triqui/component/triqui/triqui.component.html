@@ -1,10 +1,10 @@
 <div class="container-win">
-    <h1>Player 1</h1>
+    <h1 [ngStyle]="{'display': gameOver ? 'block': 'none'}">Ganador: {{playerWin}}</h1>
 </div>
 
 <div class="container-triqui">    
     <div class="player-one">
-        <h3>Jugador 1</h3>
+        <h3>{{player1}}</h3>
         <p>Use el click derecho en su turno</p>
     </div>
 
@@ -60,7 +60,11 @@
     </div>
 
     <div class="player-two">
-        <h3>Jugador 1</h3>
+        <h3>{{player2}}</h3>
         <p>Use el click izquierdo en su turno</p>
-    </div>
+    </div>    
+</div>
+
+<div *ngIf="gameOver" class="container-button-reset">
+    <button class="button-reset" (click)="resetGame($event)">Volver a jugar</button>
 </div>

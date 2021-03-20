@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { PalyersService } from 'src/app/core/services/player.service';
 import { IElementSelected } from 'src/app/interfaces';
 
 @Component({
@@ -7,6 +9,12 @@ import { IElementSelected } from 'src/app/interfaces';
   styleUrls: ['./triqui.component.scss']
 })
 export class TriquiComponent implements OnInit {
+
+  gameOver = false;
+
+  player1: string = "";
+  player2: string = "";
+  playerWin: string = "";
 
   one?: IElementSelected;
   two?: IElementSelected;
@@ -18,28 +26,41 @@ export class TriquiComponent implements OnInit {
   eigh?: IElementSelected;
   nine?: IElementSelected;
 
-  constructor() { }
+  constructor(
+    private palyersService: PalyersService,
+    private router: Router,
+  ) { }
 
-  selectedCircle: IElementSelected[] = [
-    {
-      position: 0,
-      player: "0"
-    }
-  ];
-  selectedEx: IElementSelected[] = [];
+  selectedCircle: number[] = [];
+  selectedEx: number[] = [];
 
   ngOnInit(): void {
+    this.palyersService.players$.subscribe(players => {
+      if (players && players.length) {
+        this.player1 = players[0];
+        this.player2 = players[1];
+      } else {
+        this.router.navigate(['/'])
+      }
+    })
   }
 
   onClick(position: number) {
-    this.selectedCircle.push({ position, player: 'X' })
-    this.changeTurn(position, "X");
+    this.selectedEx.push(position)
+    this.changeTurn(position, this.player1);
+    this.gameOver = this.isWin(this.player1)
+    if(this.gameOver){
+      this.playerWin = this.player1;
+    }
   }
 
   onRightClick(position: number) {
-    console.log('position: ', position);
-    this.selectedEx.push({ position, player: 'O' })
-    this.changeTurn(position, "O");
+    this.selectedCircle.push(position)
+    this.changeTurn(position, this.player2);
+    this.gameOver = this.isWin(this.player2)
+    if(this.gameOver){
+      this.playerWin = this.player2;
+    }
   }
 
   changeTurn(position: number, player: string) {
@@ -73,6 +94,68 @@ export class TriquiComponent implements OnInit {
         break;
       default: break;
     }
+  }
+
+  /**
+   * Validate if exist a win (Todo: it is posible improve) true: win, false: none
+   * @param player: string
+   * @returns: boolean
+   */
+  isWin(player: string): boolean {
+    if (player === this.player1 && this.selectedEx.length > 2) {
+      if (this.containAll([0, 1, 2], this.selectedEx)) return true;
+      if (this.containAll([0, 4, 8], this.selectedEx)) return true;
+      if (this.containAll([0, 3, 6], this.selectedEx)) return true;
+
+      if (this.containAll([1, 4, 7], this.selectedEx)) return true;
+
+      if (this.containAll([2, 4, 6], this.selectedEx)) return true;
+      if (this.containAll([2, 5, 8], this.selectedEx)) return true;
+
+      if (this.containAll([3, 4, 5], this.selectedEx)) return true;
+    }
+    if (player === this.player2 && this.selectedCircle.length > 2) {
+      if (this.containAll([0, 1, 2], this.selectedCircle)) return true;
+      if (this.containAll([0, 4, 8], this.selectedCircle)) return true;
+      if (this.containAll([0, 3, 6], this.selectedCircle)) return true;
+
+      if (this.containAll([1, 4, 7], this.selectedCircle)) return true;
+
+      if (this.containAll([2, 4, 6], this.selectedCircle)) return true;
+      if (this.containAll([2, 5, 8], this.selectedCircle)) return true;
+
+      if (this.containAll([3, 4, 5], this.selectedCircle)) return true;
+    }
+    return false
+  }
+
+  containAll(elements: number[], list: number[]) {
+    let count = 0
+    for (const element of elements) {
+      if (list.includes(element)) count++
+    }
+    if (count > 2) return true;
+    return false
+  }
+
+  /**
+   * Game again
+   */
+  resetGame(e: Event){
+    this.one = undefined;
+    this.two = undefined;
+    this.three = undefined;
+    this.four = undefined;
+    this.five = undefined;
+    this.six = undefined;
+    this.seven = undefined;
+    this.eigh = undefined;
+    this.nine = undefined;
+
+    this.selectedCircle = [];
+    this.selectedEx = [];
+    this.gameOver = false;
+
   }
 
 }
